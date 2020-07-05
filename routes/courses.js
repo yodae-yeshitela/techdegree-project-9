@@ -49,7 +49,7 @@ router.post('/',authenticateUser, validateNewCourse , asyncHandler(async(req,res
         return next(err);
     }
     let course = await Course.create({userId : req.currentUserId,...req.body});
-    res.header('Location', `api/courses/${course.id}`).json();
+    res.status(201).header('Location', `api/courses/${course.id}`).end();
     })
 );
 
